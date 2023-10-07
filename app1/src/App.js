@@ -1,32 +1,56 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
 
-function myComponent(){
-  return <h1>Hello My Component</h1>
+
+class App extends React.Component{
+
+  constructor(props){
+    super(props)
   }
-class MyClassComponent extends React.Component{
+
+  //overridden render function
   render(){
-    return <h1>Class Component</h1>
+    return <button onClick={this.props.clickEvent} >Click Me</button>
   }
+
 }
 
-function App() {
 
-const classComponent = new MyClassComponent();
+// function myComponent() {
+//   return <h1>Hello My Component</h1>;
+// }
 
-  //const myComponent = () =>{
-    //return <h1>Hello</h1>
-  //}
+// class MyClassComponent extends React.Component {
+//   render() {
+//     return <h1>Class Component</h1>;
+//   }
+// }
 
-  return classComponent.render();
-  //return myComponent();
+// function App(props) {
+//   console.log(props.color);
+//   console.log(props.size);
+//   console.log(props.clickEvent);
+//   return (
+//     <div className="App">
+//       <button onClick={props.clickEvent} >Click Me</button>
+//     </div>
+//   );
+// }
 
-  return React.createElement(
-    "div",
-    null,
-    React.createElement("h1",null,"This is Heading")
-    
-  );
-}
+//const classComponent = new MyClassComponent();
+
+//const myComponent = () =>{
+//return <h1>Hello</h1>
+//}
+//return myComponent();
+
+//return classComponent.render();
+
+//return React.createElement(
+// "div",
+// null,
+// React.createElement("h1", null, "This is Heading")
+//);
+//}
 
 export default App;
