@@ -1,20 +1,76 @@
 import React from "react";
 import "./App.css";
 
-
-class App extends React.Component{
-
-  constructor(props){
-    super(props)
-  }
-
-  //overridden render function
+class InnerComponent extends React.Component{
   render(){
-    return <button onClick={this.props.clickEvent} >Click Me</button>
+    return(
+      <div>
+        Inner Component is Here
+      </div>
+    )
+  }
+  componentWillUnmount(){
+    console.log("Unmounting Inner Component")
   }
 
 }
 
+
+class App extends React.Component {
+  state = { counter: 10 , importnnerComponent : <InnerComponent/> };
+  constructor(props) {
+    super(props)
+    console.log("I am inside constructor")
+  }
+
+  
+  counterIncrement = ()=>{
+    this.setState({counter:this.state.counter+1})
+    this.setState({innerComponent :<div>Unmounted</div>})
+   
+  }
+  static getDerivedStateFromProps(){
+    console.log("I am inside Derived State")
+    return true
+  }
+
+  shouldComponentUpdate(){
+    console.log("I am inside Should Component Update")
+    return true;
+
+  }
+  //overridden render function
+  render() {
+    console.log("I am inside Render")
+    console.log(this.props)
+    return (
+      <div>
+        <button onClick={this.counterIncrement}>Click Me</button>
+        <br/>
+        Counter :{this.state.counter}
+        <br/>
+        <div>Component :{this.innerComponent}</div>
+        
+        
+      </div>
+    );
+  }
+  getSnapshotBeforeUpdate(prevProps,prevState){
+    console.log("I am inside Get Snapshot Before Update")
+    console.log("Previous State : "+ prevState)
+    console.log("Previous Props : "+ prevProps)
+    console.log("Props : "+ this.props)
+    console.log("State : "+ this.state)
+    return true
+
+  }
+
+  componentDidMount(){
+    console.log("I am inside ComponentDid Mount")
+    return true
+    
+  }
+}
 
 // function myComponent() {
 //   return <h1>Hello My Component</h1>;
@@ -54,3 +110,4 @@ class App extends React.Component{
 //}
 
 export default App;
+
