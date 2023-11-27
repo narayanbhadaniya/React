@@ -1,10 +1,9 @@
 import {Outlet,Link } from "react-router-dom";
 import SignUp from "./Signup";
-
 function Navigation()
 {
     return (<div>
-        <nav>
+        <nav style={{backgroundColor: "black"}}>
             <ul>
                 <li>
                     <Link to="/">Home</Link>
@@ -20,7 +19,7 @@ function Navigation()
                 </li>
             </ul>
         </nav>
-        <Outlet />
+        <Outlet/>
     </div>)
 }
 export default Navigation;
